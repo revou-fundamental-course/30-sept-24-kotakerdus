@@ -78,12 +78,10 @@ rightInput.onclick = (e) => {
 
 // 'oninput' run these codes when the input-box is in focus (real-time run)
 leftInput.oninput = (e) => {
-    // if (leftInput.value > 0) leftInput.value *= 1; // Remove leading zero (but can't use fraction)
     calculateRight();
 }
 
 rightInput.oninput = (e) => {
-    // if (rightInput.value > 0) rightInput.value *= 1;
     calculateLeft();
 }
 
