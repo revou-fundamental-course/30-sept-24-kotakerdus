@@ -78,23 +78,39 @@ rightInput.onclick = (e) => {
 
 // 'oninput' run these codes when the input-box is in focus (real-time run)
 leftInput.oninput = (e) => {
+    inputWarning(leftInput);
     calculateRight();
 }
 
 rightInput.oninput = (e) => {
+    inputWarning(rightInput);
     calculateLeft();
+}
+
+function inputWarning(whichInput) {
+    if (whichInput.value == "") {
+        leftInput.style.backgroundColor = 'crimson';
+        rightInput.style.backgroundColor = 'crimson';
+    } else {
+        leftInput.style.backgroundColor = '';
+        rightInput.style.backgroundColor = '';
+    }
 }
 
 // 'onchange' run these codes when user done input the value inside input-box (one-time run)
 leftInput.onchange = (e) => {
-    // If the input-box is blank by the user (deleted all the number) put 0 instead
+    // If the input-box is blank (deleted all the number) or there's invalid string put 0 instead & reset the input warning color
     if (leftInput.value == "") leftInput.value = 0;
+    leftInput.style.backgroundColor = '';
+    rightInput.style.backgroundColor = '';
     leftInput.value -= 0; // Remove leading zero
     calculateRight();
 }
 
 rightInput.onchange = (e) => {
     if (rightInput.value == "") rightInput.value = 0;
+    leftInput.style.backgroundColor = '';
+    rightInput.style.backgroundColor = '';
     rightInput.value -= 0;
     calculateLeft();
 }
