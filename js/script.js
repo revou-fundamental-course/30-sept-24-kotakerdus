@@ -35,10 +35,11 @@ leftDropdown.onchange = (e) => {
         rightDropdown.selectedIndex = leftDropdownValue;
         rightDropdownValue = rightDropdown.value;
         // Also swap between the input-boxes value
+        var tempVal = leftInput.value;
         leftInput.value = rightInput.value;
+        rightInput.value = tempVal;
 
         leftDropdownValue = leftDropdown.value;
-        calculateRight();
     } else {
         // If not the same then only calculate on the one that is changed
         // (so that you can convert like this = 100C -> 212F then -> 373.2K)
@@ -53,10 +54,11 @@ rightDropdown.onchange = (e) => {
     if (leftDropdownValue == rightDropdown.value) {
         leftDropdown.selectedIndex = rightDropdownValue;
         leftDropdownValue = leftDropdown.value;
+        var tempVal = rightInput.value;
         rightInput.value = leftInput.value;
+        leftInput.value = tempVal;
 
         rightDropdownValue = rightDropdown.value;
-        calculateLeft();
     } else {
         rightDropdownValue = rightDropdown.value;
         calculateRight();
@@ -67,12 +69,12 @@ rightDropdown.onchange = (e) => {
 
 // 'oninput' run these codes when the input-box is in focus (real-time run)
 leftInput.oninput = (e) => {
-    if (leftInput.value > 0) leftInput.value *= 1; // Remove leading zero
+    // if (leftInput.value > 0) leftInput.value *= 1; // Remove leading zero (but can't use fraction)
     calculateRight();
 }
 
 rightInput.oninput = (e) => {
-    if (rightInput.value > 0) rightInput.value *= 1;
+    // if (rightInput.value > 0) rightInput.value *= 1;
     calculateLeft();
 }
 
@@ -80,11 +82,13 @@ rightInput.oninput = (e) => {
 leftInput.onchange = (e) => {
     // If the input-box is blank by the user (deleted all the number) put 0 instead
     if (leftInput.value == "") leftInput.value = 0;
+    leftInput.value -= 0; // Remove leading zero
     calculateRight();
 }
 
 rightInput.onchange = (e) => {
     if (rightInput.value == "") rightInput.value = 0;
+    rightInput.value -= 0;
     calculateLeft();
 }
 
