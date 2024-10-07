@@ -67,6 +67,7 @@ rightDropdown.onchange = (e) => {
     updateFormula();
 }
 
+// 'onclick' run once as soon as the user clicked the input-box which select all the its content
 leftInput.onclick = (e) => {
     leftInput.select();
 }
