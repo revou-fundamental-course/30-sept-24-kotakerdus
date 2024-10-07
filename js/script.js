@@ -67,6 +67,14 @@ rightDropdown.onchange = (e) => {
     updateFormula();
 }
 
+leftInput.onclick = (e) => {
+    leftInput.select();
+}
+
+rightInput.onclick = (e) => {
+    rightInput.select();
+}
+
 // 'oninput' run these codes when the input-box is in focus (real-time run)
 leftInput.oninput = (e) => {
     // if (leftInput.value > 0) leftInput.value *= 1; // Remove leading zero (but can't use fraction)
