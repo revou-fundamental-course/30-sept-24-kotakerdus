@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Temperature Conversion</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <header>Konversi Temperatur</header>
+            <div class="divider"></div>
+            <div class="content">
+                <form>
+                    <div class="input-content">
+                        <input type="number" id="left-input"></input>
+                        <select id="left-select">
+                            <option value="0">Celcius (°C)</option>
+                            <option value="1">Fahrenheit (°F)</option>
+                            <option value="2">Kelvin (°K)</option>
+                        </select>
+                    </div>
+                </form>
+                <span class="equal-sign">=</span>
+                <form>
+                    <div class="input-content">
+                        <input type="number" id="right-input"></input>
+                        <select id="right-select">
+                            <option value="0">Celcius (°C)</option>
+                            <option value="1" selected="selected">Fahrenheit (°F)</option>
+                            <option value="2">Kelvin (°K)</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="formula">
+                <i>Formula</i>&nbsp;
+                <div>
+                    <span id="celFah">(<span class="left-value">0</span><b>°C</b> x 9/5) + 32 = <span class="right-value">32</span><b>°F</b></span>
+                    <span id="celKel"><span class="left-value">0</span><b>°C</b> + 273.15 = <span class="right-value">273,15</span><b>°K</b></span>
+                    <span id="fahCel">(<span class="left-value">0</span><b>°F</b> - 32) x 5/9 = <span class="right-value">-17,78</span><b>°C</b></span>
+                    <span id="fahKel">(<span class="left-value">0</span><b>°F</b> - 32) x 5/9 + 273.15 = <span class="right-value">-255,372</span><b>°K</b></span>
+                    <span id="kelCel"><span class="left-value">0</span><b>°K</b> - 273.15 = <span class="right-value">-273,1</span><b>°C</b></span>
+                    <span id="kelFah">(<span class="left-value">0</span><b>°K</b> - 273.15) x 9/5 + 32 = <span class="right-value">-459,7</span><b>°F</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>

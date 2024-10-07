@@ -1,0 +1,70 @@
+:root {
+  --border-color: #cdcdcd;
+  --inner-space: 15px;
+}
+
+* {
+  font-family: "Calibri";
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper .card {
+  background-color: white;
+  padding: var(--inner-space);
+  margin: var(--inner-space);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--inner-space);
+}
+
+header {
+  font-size: 15pt;
+  font-weight: 1000;
+}
+
+.divider {
+  background-color: var(--border-color);
+  height: 1px;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+}
+
+.content form {
+  width: 110px;
+}
+
+.content .equal-sign {
+  font-weight: 1000;
+  padding: 7px var(--inner-space) 0;
+}
+
+.content .input-content {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.content .input-content input {
+  font-size: 16pt;
+  font-weight: 1000;
+  text-align: center;
+}
+
+.formula {
+  width: 100%;
+  /* border: 1px solid #e6e6e6; */
+  /* padding: 10px; */
+  /* border-radius: 10px; */
+}
