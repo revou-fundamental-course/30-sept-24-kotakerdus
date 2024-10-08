@@ -1,25 +1,16 @@
 var leftInput = document.getElementById("left-input");
-var leftDropdown = document.getElementById("left-select");
 var rightInput = document.getElementById("right-input");
+var leftDropdown = document.getElementById("left-select");
 var rightDropdown = document.getElementById("right-select");
-
-var formulaCF = document.getElementById("celFah");
-var formulaCK = document.getElementById("celKel");
-var formulaFC = document.getElementById("fahCel");
-var formulaFK = document.getElementById("fahKel");
-var formulaKC = document.getElementById("kelCel");
-var formulaKF = document.getElementById("kelFah");
-
-var formulaLeftValue = document.getElementsByClassName("left-value");
-var formulaRightValue = document.getElementsByClassName("right-value");
-
 var leftDropdownValue = leftDropdown.value;
 var rightDropdownValue = rightDropdown.value;
 
+var formulaText = document.getElementById("formula-text");
+
 // Run this code as soon as the document stuff done loading
 window.onload = function(e) {
-    updateFormula();
     initValue();
+    updateFormula();
 };
 
 // Initial value
@@ -117,19 +108,15 @@ rightInput.onchange = (e) => {
 
 // Hide all the formula texts then shows only the one user select
 function updateFormula() {
-    formulaCF.style.display = 'none';
-    formulaCK.style.display = 'none';
-    formulaFC.style.display = 'none';
-    formulaFK.style.display = 'none';
-    formulaKC.style.display = 'none';
-    formulaKF.style.display = 'none';
+    var left = leftInput.value;
+    var right = rightInput.value;
 
-    if      (leftDropdownValue == 0 && rightDropdownValue == 1) formulaCF.style.display = 'initial';
-    else if (leftDropdownValue == 0 && rightDropdownValue == 2) formulaCK.style.display = 'initial';
-    else if (leftDropdownValue == 1 && rightDropdownValue == 0) formulaFC.style.display = 'initial';
-    else if (leftDropdownValue == 1 && rightDropdownValue == 2) formulaFK.style.display = 'initial';
-    else if (leftDropdownValue == 2 && rightDropdownValue == 0) formulaKC.style.display = 'initial';
-    else if (leftDropdownValue == 2 && rightDropdownValue == 1) formulaKF.style.display = 'initial';
+    if      (leftDropdownValue == 0 && rightDropdownValue == 1) formulaText.innerHTML = "(" + left + "<b>°C</b> x <sup>9</sup>&frasl;<sub>5</sub>) + 32 = "          + right + "<b>°F</b>";
+    else if (leftDropdownValue == 0 && rightDropdownValue == 2) formulaText.innerHTML =       left + "<b>°C</b> + 273.15 = "                                         + right + "<b>°K</b>";
+    else if (leftDropdownValue == 1 && rightDropdownValue == 0) formulaText.innerHTML = "(" + left + "<b>°F</b> - 32) x <sup>5</sup>&frasl;<sub>9</sub> = "          + right + "<b>°C</b>";
+    else if (leftDropdownValue == 1 && rightDropdownValue == 2) formulaText.innerHTML = "(" + left + "<b>°F</b> - 32) x <sup>5</sup>&frasl;<sub>9</sub> + 273.15 = " + right + "<b>°K</b>";
+    else if (leftDropdownValue == 2 && rightDropdownValue == 0) formulaText.innerHTML =       left + "<b>°K</b> - 273.15 = "                                         + right + "<b>°C</b>";
+    else if (leftDropdownValue == 2 && rightDropdownValue == 1) formulaText.innerHTML = "(" + left + "<b>°K</b> - 273.15) x <sup>9</sup>&frasl;<sub>5</sub> + 32 = " + right + "<b>°F</b>";
 }
 
 // Calculate the other side
@@ -137,38 +124,30 @@ function calculateRight() {
     var leftValue = parseFloat(leftInput.value);
     var rightValue = parseFloat(rightInput.value);
 
-    if      (leftDropdownValue == 0 && rightDropdownValue == 1) rightValue = (leftValue * (9/5)) + 32;
+    if      (leftDropdownValue == 0 && rightDropdownValue == 1) rightValue = (leftValue * (9/5))   + 32;
     else if (leftDropdownValue == 0 && rightDropdownValue == 2) rightValue = leftValue + 273.15;
-    else if (leftDropdownValue == 1 && rightDropdownValue == 0) rightValue = (leftValue - 32) * (5/9);
-    else if (leftDropdownValue == 1 && rightDropdownValue == 2) rightValue = ((leftValue - 32) * (5/9)) + 273.15;
+    else if (leftDropdownValue == 1 && rightDropdownValue == 0) rightValue = (leftValue - 32)      * (5/9);
+    else if (leftDropdownValue == 1 && rightDropdownValue == 2) rightValue = ((leftValue - 32)     * (5/9)) + 273.15;
     else if (leftDropdownValue == 2 && rightDropdownValue == 0) rightValue = leftValue - 273.15;
     else if (leftDropdownValue == 2 && rightDropdownValue == 1) rightValue = ((leftValue - 273.15) * (9/5)) + 32;
 
     if (leftInput.value == "") rightInput.value = ""; // Avoid error
-    else rightInput.value = Math.round(rightValue * 10) / 10; // Only show decimal if needed
-    updateFormulaValues();
+    else rightInput.value = Math.round(rightValue * 100) / 100; // Only show decimal if needed
+    updateFormula();
 }
 
 function calculateLeft() {
     var leftValue = parseFloat(leftInput.value);
     var rightValue = parseFloat(rightInput.value);
 
-    if      (leftDropdownValue == 0 && rightDropdownValue == 1) leftValue = (rightValue - 32) * (5/9);
+    if      (leftDropdownValue == 0 && rightDropdownValue == 1) leftValue = (rightValue - 32)      * (5/9);
     else if (leftDropdownValue == 0 && rightDropdownValue == 2) leftValue = rightValue - 273.15;
-    else if (leftDropdownValue == 1 && rightDropdownValue == 0) leftValue = (rightValue * (9/5)) + 32;
+    else if (leftDropdownValue == 1 && rightDropdownValue == 0) leftValue = (rightValue * (9/5))   + 32;
     else if (leftDropdownValue == 1 && rightDropdownValue == 2) leftValue = ((rightValue - 273.15) * (9/5)) + 32;
     else if (leftDropdownValue == 2 && rightDropdownValue == 0) leftValue = rightValue + 273.15;
-    else if (leftDropdownValue == 2 && rightDropdownValue == 1) leftValue = ((rightValue - 32) * (5/9)) + 273.15;
+    else if (leftDropdownValue == 2 && rightDropdownValue == 1) leftValue = ((rightValue - 32)     * (5/9)) + 273.15;
 
     if (rightInput.value == "") leftInput.value = "";
-    else leftInput.value = Math.round(leftValue * 10) / 10;
-    updateFormulaValues();
-}
-
-// Update some number on formula text
-function updateFormulaValues() {
-    for (var i = 0; i < formulaLeftValue.length; i++) {
-        formulaLeftValue[i].innerHTML = leftInput.value == "" ? "" : leftInput.value;
-        formulaRightValue[i].innerHTML = rightInput.value == "" ? "" : rightInput.value;
-    }
+    else leftInput.value = Math.round(leftValue * 100) / 100;
+    updateFormula();
 }
