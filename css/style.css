@@ -18,7 +18,6 @@
 .wrapper .card {
   background-color: white;
   padding: calc(var(--inner-space) * 2) var(--inner-space);
-  margin: var(--inner-space);
   border: 1px solid var(--border-color);
   border-radius: 10px;
   box-shadow:
@@ -34,6 +33,11 @@
 header {
   font-size: 30pt;
   font-weight: bold;
+  position: relative;
+  top: -60px;
+  left: 17px;
+  scale: 4;
+  rotate: 15deg;
 }
 
 .content {
