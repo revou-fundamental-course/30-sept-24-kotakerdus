@@ -2,7 +2,7 @@ var leftInput = document.getElementById("left-input");
 var rightInput = document.getElementById("right-input");
 var leftDropdown = document.getElementById("left-select");
 var rightDropdown = document.getElementById("right-select");
-var leftDropdownValue = leftDropdown.value;
+var leftDropdownValue = leftDropdown.value; // Only for value reference
 var rightDropdownValue = rightDropdown.value;
 
 var formulaText = document.getElementById("formula-text");
@@ -80,8 +80,8 @@ rightInput.oninput = (e) => {
 
 function inputWarning(whichInput) {
     if (whichInput.value == "") {
-        leftInput.style.backgroundColor = 'crimson';
-        rightInput.style.backgroundColor = 'crimson';
+        leftInput.style.backgroundColor = 'yellow';
+        rightInput.style.backgroundColor = 'yellow';
     } else {
         leftInput.style.backgroundColor = '';
         rightInput.style.backgroundColor = '';
@@ -131,8 +131,7 @@ function calculateRight() {
     else if (leftDropdownValue == 2 && rightDropdownValue == 0) rightValue = leftValue - 273.15;
     else if (leftDropdownValue == 2 && rightDropdownValue == 1) rightValue = ((leftValue - 273.15) * (9/5)) + 32;
 
-    if (leftInput.value == "") rightInput.value = ""; // Avoid error
-    else rightInput.value = Math.round(rightValue * 100) / 100; // Only show decimal if needed
+    rightInput.value = leftInput.value == "" ? "" : Math.round(rightValue * 100) / 100; // Blank to avoid errors & show decimals if needed
     updateFormula();
 }
 
@@ -147,7 +146,6 @@ function calculateLeft() {
     else if (leftDropdownValue == 2 && rightDropdownValue == 0) leftValue = rightValue + 273.15;
     else if (leftDropdownValue == 2 && rightDropdownValue == 1) leftValue = ((rightValue - 32)     * (5/9)) + 273.15;
 
-    if (rightInput.value == "") leftInput.value = "";
-    else leftInput.value = Math.round(leftValue * 100) / 100;
+    leftInput.value = rightInput.value == "" ? "" : Math.round(leftValue * 100) / 100;
     updateFormula();
 }

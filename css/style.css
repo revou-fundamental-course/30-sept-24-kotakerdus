@@ -1,6 +1,6 @@
 :root {
   --border-color: #cdcdcd;
-  --inner-space: 15px;
+  --inner-space: 20px;
 }
 
 * {
@@ -15,7 +15,7 @@
 
 .wrapper .card {
   background-color: white;
-  padding: var(--inner-space);
+  padding: calc(var(--inner-space) * 2) var(--inner-space);
   margin: var(--inner-space);
   border: 1px solid var(--border-color);
   border-radius: 10px;
@@ -27,14 +27,9 @@
 }
 
 header {
-  font-size: 15pt;
-  font-weight: 1000;
-}
-
-.divider {
-  background-color: var(--border-color);
-  height: 1px;
-  width: 100%;
+  font-size: 30pt;
+  font-weight: bold;
+  margin-bottom: var(--inner-space);
 }
 
 .content {
@@ -60,6 +55,18 @@ header {
   font-size: 16pt;
   font-weight: 1000;
   text-align: center;
+}
+
+input {
+  border: 1px solid var(--border-color);
+  border-radius: 5px 5px 0 0;
+}
+
+select {
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 5px 5px;
+  margin-top: -1px;
+  background-color: #f6f2f9;
 }
 
 .formula {
