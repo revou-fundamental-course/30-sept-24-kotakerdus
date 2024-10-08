@@ -8,9 +8,11 @@
 }
 
 .wrapper {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .wrapper .card {
@@ -19,7 +21,10 @@
   margin: var(--inner-space);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0 0 25px 10px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +34,6 @@
 header {
   font-size: 30pt;
   font-weight: bold;
-  margin-bottom: var(--inner-space);
 }
 
 .content {
@@ -71,4 +75,8 @@ select {
 
 .formula {
   width: 100%;
+}
+
+.formula #formula-text {
+  display: block;
 }
