@@ -34,6 +34,8 @@ header {
   font-size: 20pt;
   font-weight: bold;
   margin-bottom: -20px;
+  color: transparent;
+  text-shadow: 0 0 0 black;
 }
 
 header .temp {
@@ -94,4 +96,10 @@ select {
 
 .formula #formula-text {
   display: block;
+}
+
+.credit {
+  font-size: 10pt;
+  margin: 10px 0 -20px 0;
+  color: lightgray;
 }
