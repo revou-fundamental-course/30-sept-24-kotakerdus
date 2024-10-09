@@ -7,6 +7,10 @@
   font-family: "Calibri";
 }
 
+body {
+  margin: 0;
+}
+
 .wrapper {
   height: 100vh;
   display: flex;
