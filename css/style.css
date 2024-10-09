@@ -38,8 +38,6 @@ header {
   font-size: 20pt;
   font-weight: bold;
   margin-bottom: -20px;
-  color: transparent;
-  text-shadow: 0 0 0 black;
 }
 
 header .temp {
