@@ -6,11 +6,15 @@ let leftDropVal = leftDrop.value; // Only for value reference
 let rightDropdVal = rightDrop.value;
 
 const formulaText = document.getElementById("formula-text");
+const longExp = document.getElementById("long-exp")
+const btnExp = document.getElementById("btn-Exp");
+const expText = document.getElementById("explanation")
 
 // Run this code as soon as the document stuff done loading
 window.onload = function(e) {
     initValue();
     updateFormula();
+    longExp.style.display = 'none';
 };
 
 // Initial value
@@ -70,6 +74,11 @@ rightInput.onchange = (e) => {
     calculateLeft();
 }
 
+function toggleExp() {
+    longExp.style.display = longExp.style.display == 'none' ? 'block' : 'none';
+    btnExp.textContent = longExp.style.display == 'none' ? 'Explain' : 'Hide';
+}
+
 // Hide all the formula texts then shows only the one user select
 function updateFormula() {
     let left = leftInput.value;
@@ -81,6 +90,25 @@ function updateFormula() {
     else if (leftDropVal == 1 && rightDropdVal == 2) formulaText.innerHTML = "(" + left + "<b>°F</b> - 32) x <sup>5</sup>&frasl;<sub>9</sub> + 273.15 = " + right + "<b>°K</b>";
     else if (leftDropVal == 2 && rightDropdVal == 0) formulaText.innerHTML =       left + "<b>°K</b> - 273.15 = "                                         + right + "<b>°C</b>";
     else if (leftDropVal == 2 && rightDropdVal == 1) formulaText.innerHTML = "(" + left + "<b>°K</b> - 273.15) x <sup>9</sup>&frasl;<sub>5</sub> + 32 = " + right + "<b>°F</b>";
+
+    if (leftDropVal == 0 && rightDropdVal == 1) expText.innerHTML =
+        "Suhu <b>S</b> dalam derajat <i>Fahrenheit</i> (°F) sama dengan suhu <b>S</b> dalam derajat <i>Celcius</i> (°C) kali <sup>9</sup>&frasl;<sub>5</sub> tambah 32 " +
+        "<br><br><b>S</b><sub>(°F)</sub> = (<b>S</b><sub>(°C)</sub> x <sup>9</sup>&frasl;<sub>5</sub>) + 32";
+    else if (leftDropVal == 0 && rightDropdVal == 2) expText.innerHTML =
+        "Suhu <b>S</b> dalam derajat <i>Kelvin</i> (°K) sama dengan suhu <b>S</b> dalam derajat <i>Celcius</i> (°C) tambah 273.15" +
+        "<br><br><b>S</b><sub>(°K)</sub> = <b>S</b><sub>(°C)</sub> + 273.15";
+    else if (leftDropVal == 1 && rightDropdVal == 0) expText.innerHTML =
+        "Suhu <b>S</b> dalam derajat <i>Celcius</i> (°C) sama dengan suhu <b>S</b> dalam derajat <i>Fahrenheit</i> (°F) dikurang 32 lalu kali <sup>5</sup>&frasl;<sub>9</sub>" +
+        "<br><br><b>S</b><sub>(°C)</sub> = (<b>S</b><sub>(°F)</sub> - 32) x <sup>5</sup>&frasl;<sub>9</sub>";
+    else if (leftDropVal == 1 && rightDropdVal == 2) expText.innerHTML =
+        "Suhu <b>S</b> dalam derajat <i>Kelvin</i> (°K) sama dengan suhu <b>S</b> dalam derajat <i>Fahrenheit</i> (°F) dikurang 32 lalu kali <sup>5</sup>&frasl;<sub>9</sub> tambah 273.15" +
+        "<br><br><b>S</b><sub>(°K)</sub> = (<b>S</b><sub>(°F)</sub> - 32) x <sup>5</sup>&frasl;<sub>9</sub> + 273.15";
+    else if (leftDropVal == 2 && rightDropdVal == 0) expText.innerHTML =
+        "Suhu <b>S</b> dalam derajat <i>Celcius</i> (°C) sama dengan suhu <b>S</b> dalam derajat <i>Kelvin</i> (°K) kurang 273.15" +
+        "<br><br><b>S</b><sub>(°C)</sub> = <b>S</b><sub>(°K)</sub> - 273.15";
+    else if (leftDropVal == 2 && rightDropdVal == 1) expText.innerHTML =
+        "Suhu <b>S</b> dalam derajat <i>Fahrenheit</i> (°F) sama dengan suhu <b>S</b> dalam derajat <i>Kelvin</i> (°K) kurang 273.15 kali <sup>9</sup>&frasl;<sub>5</sub> tambah 32 " +
+        "<br><br><b>S</b><sub>(°F)</sub> = (<b>S</b><sub>(°K)</sub> -273.15) x <sup>9</sup>&frasl;<sub>5</sub> + 32";
 }
 
 function doneLeftSelecting() {

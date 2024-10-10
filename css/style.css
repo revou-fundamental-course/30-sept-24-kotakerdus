@@ -1,6 +1,9 @@
 :root {
   --border-color: #cdcdcd;
+  --border-radi: 5px;
   --inner-space: 20px;
+  --accent : #f3f3f3;
+  --hover-accent : #f6f2f9;
 }
 
 /* Assign default font & remove default margin value */
@@ -30,6 +33,8 @@ body, h1, h2, h3, h4, h5, h6 { margin: 0; }
   flex-direction: column;
   align-items: center;
   gap: var(--inner-space);
+  width: 310px;
+  min-width: 310px;
 }
 
 /* Resize & centering the icon  */
@@ -56,11 +61,15 @@ header .snow {
 }
 
 /* Make the input & dropdown in-line */
-.content { display: flex; }
+.content {
+  display: flex;
+  width: 100%;
+}
 
 /* Resize & flex-column the form content (input & select) */
 .content form {
-  width: 110px;
+  width: 100%;
+  min-width: 110px;
   display: flex;
   flex-direction: column;
 }
@@ -70,14 +79,15 @@ header .snow {
   font-weight: 1000;
   text-align: center;
   border: 1px solid var(--border-color);
-  border-radius: 5px 5px 0 0;
+  border-radius: var(--border-radi) var(--border-radi) 0 0;
 }
 
 .content select {
   border: 1px solid var(--border-color);
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 var(--border-radi) var(--border-radi);
   margin-top: -1px;
-  background-color: #f6f2f9;
+  background-color: var(--accent);
+  transition: background-color .25s;
 }
 
 .content .equal-sign {
@@ -86,10 +96,52 @@ header .snow {
 }
 
 /* Move formula content to left side by modifying its width to fill both side due to flex */
-.formula { width: 100%; }
+.formula {
+  width: 100%;
+  display: flex;
+  margin-top: 15px;
+  flex-direction: column;
+}
+
+.formula h3 { margin-left: 9px; }
+
+.formula .explanation {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: var(--border-radi);
+  border: 1px dashed var(--border-color);
+  gap: 10px;
+  text-align: justify;
+}
+
+.formula .short-exp {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formula .long-exp { font-size: 10pt; }
+
+.formula .divider {
+  height: 1px;
+  margin-bottom: 5px;
+  border-top: 1px dashed var(--border-color);
+}
+
+button {
+  border-radius: var(--border-radi);
+  border: 1px solid var(--border-color);
+  background-color: var(--accent);
+  transition: background-color .25s;
+}
+
+button:hover, select:hover {
+  background-color: var(--hover-accent);
+}
 
 .credit {
   font-size: 10pt;
-  margin: 10px 0 -20px 0;
+  margin-bottom: -15px;
   color: lightgray;
 }
