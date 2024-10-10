@@ -33,8 +33,8 @@ body, h1, h2, h3, h4, h5, h6 { margin: 0; }
   flex-direction: column;
   align-items: center;
   gap: var(--inner-space);
-  width: 310px;
-  min-width: 310px;
+  width: 300px;
+  min-width: 300px;
 }
 
 /* Resize & centering the icon  */
@@ -103,9 +103,10 @@ header .snow {
   flex-direction: column;
 }
 
-.formula h3 { margin-left: 9px; }
+.formula h4 { margin-left: 9px; }
 
 .formula .explanation {
+  font-size: 11pt;
   display: flex;
   flex-direction: column;
   margin-top: 5px;
