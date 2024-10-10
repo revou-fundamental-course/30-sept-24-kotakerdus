@@ -63,6 +63,7 @@ header .snow {
 /* Make the input & dropdown in-line */
 .content {
   display: flex;
+  flex-direction: row;
   width: 100%;
 }
 
@@ -145,4 +146,13 @@ button:hover, select:hover {
   font-size: 10pt;
   margin-bottom: -15px;
   color: lightgray;
+}
+
+@media only screen and (max-width: 400px) {
+  .wrapper .card {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    min-width: 50px;
+  }
 }
