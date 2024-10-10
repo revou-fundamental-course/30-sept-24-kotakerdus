@@ -43,7 +43,6 @@ header {
 header .temp {
   position: relative;
   top: -70px;
-  left: -7px;
   scale: 6.5;
   rotate: 20deg;
 }
@@ -51,7 +50,7 @@ header .temp {
 header .snow {
   position: relative;
   top: -70px;
-  left: 38px;
+  left: 43px;
   scale: 2.5;
   rotate: 20deg;
 }
