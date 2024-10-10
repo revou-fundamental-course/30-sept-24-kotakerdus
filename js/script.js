@@ -20,52 +20,12 @@ function initValue() {
 }
 
 // Run these code if user done selecting from dropdown menu
-leftDropdown.onchange = (e) => {
-    // Check if the selected dropdown is the same with right dropdown then swap between two
-    if (rightDropdownValue == leftDropdown.value) {
-        rightDropdown.selectedIndex = leftDropdownValue;
-        rightDropdownValue = rightDropdown.value;
-        // Also swap between the input-boxes value
-        var tempVal = leftInput.value;
-        leftInput.value = rightInput.value;
-        rightInput.value = tempVal;
-
-        leftDropdownValue = leftDropdown.value;
-    } else {
-        // If not the same then only calculate on the one that is changed
-        // (so that you can convert like this = 100C -> 212F then -> 373.2K)
-        leftDropdownValue = leftDropdown.value;
-        calculateLeft();
-    }
-
-    updateFormula();
-}
-
-rightDropdown.onchange = (e) => {
-    if (leftDropdownValue == rightDropdown.value) {
-        leftDropdown.selectedIndex = rightDropdownValue;
-        leftDropdownValue = leftDropdown.value;
-        var tempVal = rightInput.value;
-        rightInput.value = leftInput.value;
-        leftInput.value = tempVal;
-
-        rightDropdownValue = rightDropdown.value;
-    } else {
-        rightDropdownValue = rightDropdown.value;
-        calculateRight();
-    }
-
-    updateFormula();
-}
+leftDropdown.onchange = (e) => { doneLeftSelecting(); }
+rightDropdown.onchange = (e) => { doneRightSelecting(); }
 
 // 'onclick' run once as soon as the user clicked the input-box which select all the its content
-leftInput.onclick = (e) => {
-    leftInput.select();
-}
-
-rightInput.onclick = (e) => {
-    rightInput.select();
-}
+leftInput.onclick = (e) => { leftInput.select(); }
+rightInput.onclick = (e) => { rightInput.select(); }
 
 // 'oninput' run these codes when the input-box is in focus (real-time run)
 leftInput.oninput = (e) => {
@@ -117,6 +77,44 @@ function updateFormula() {
     else if (leftDropdownValue == 1 && rightDropdownValue == 2) formulaText.innerHTML = "(" + left + "<b>°F</b> - 32) x <sup>5</sup>&frasl;<sub>9</sub> + 273.15 = " + right + "<b>°K</b>";
     else if (leftDropdownValue == 2 && rightDropdownValue == 0) formulaText.innerHTML =       left + "<b>°K</b> - 273.15 = "                                         + right + "<b>°C</b>";
     else if (leftDropdownValue == 2 && rightDropdownValue == 1) formulaText.innerHTML = "(" + left + "<b>°K</b> - 273.15) x <sup>9</sup>&frasl;<sub>5</sub> + 32 = " + right + "<b>°F</b>";
+}
+
+function doneLeftSelecting() {
+    // Check if the selected dropdown is the same with right dropdown then swap between two
+    if (rightDropdownValue == leftDropdown.value) {
+        rightDropdown.selectedIndex = leftDropdownValue;
+        rightDropdownValue = rightDropdown.value;
+        // Also swap between the input-boxes value
+        var tempVal = leftInput.value;
+        leftInput.value = rightInput.value;
+        rightInput.value = tempVal;
+
+        leftDropdownValue = leftDropdown.value;
+    } else {
+        // If not the same then only calculate on the one that is changed
+        // (so that you can convert like this = 100C -> 212F then -> 373.2K)
+        leftDropdownValue = leftDropdown.value;
+        calculateLeft();
+    }
+
+    updateFormula();
+}
+
+function doneRightSelecting() {
+    if (leftDropdownValue == rightDropdown.value) {
+        leftDropdown.selectedIndex = rightDropdownValue;
+        leftDropdownValue = leftDropdown.value;
+        var tempVal = rightInput.value;
+        rightInput.value = leftInput.value;
+        leftInput.value = tempVal;
+
+        rightDropdownValue = rightDropdown.value;
+    } else {
+        rightDropdownValue = rightDropdown.value;
+        calculateRight();
+    }
+
+    updateFormula();
 }
 
 // Calculate the other side
