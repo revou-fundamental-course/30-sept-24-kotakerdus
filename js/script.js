@@ -1,11 +1,11 @@
-var leftInput = document.getElementById("left-input");
-var rightInput = document.getElementById("right-input");
-var leftDropdown = document.getElementById("left-select");
-var rightDropdown = document.getElementById("right-select");
-var leftDropdownValue = leftDropdown.value; // Only for value reference
-var rightDropdownValue = rightDropdown.value;
+const leftInput = document.getElementById("left-input");
+const rightInput = document.getElementById("right-input");
+const leftDropdown = document.getElementById("left-select");
+const rightDropdown = document.getElementById("right-select");
+let leftDropdownValue = leftDropdown.value; // Only for value reference
+let rightDropdownValue = rightDropdown.value;
 
-var formulaText = document.getElementById("formula-text");
+const formulaText = document.getElementById("formula-text");
 
 // Run this code as soon as the document stuff done loading
 window.onload = function(e) {
@@ -68,8 +68,8 @@ rightInput.onchange = (e) => {
 
 // Hide all the formula texts then shows only the one user select
 function updateFormula() {
-    var left = leftInput.value;
-    var right = rightInput.value;
+    let left = leftInput.value;
+    let right = rightInput.value;
 
     if      (leftDropdownValue == 0 && rightDropdownValue == 1) formulaText.innerHTML = "(" + left + "<b>°C</b> x <sup>9</sup>&frasl;<sub>5</sub>) + 32 = "          + right + "<b>°F</b>";
     else if (leftDropdownValue == 0 && rightDropdownValue == 2) formulaText.innerHTML =       left + "<b>°C</b> + 273.15 = "                                         + right + "<b>°K</b>";
@@ -85,7 +85,7 @@ function doneLeftSelecting() {
         rightDropdown.selectedIndex = leftDropdownValue;
         rightDropdownValue = rightDropdown.value;
         // Also swap between the input-boxes value
-        var tempVal = leftInput.value;
+        let tempVal = leftInput.value;
         leftInput.value = rightInput.value;
         rightInput.value = tempVal;
 
@@ -104,7 +104,7 @@ function doneRightSelecting() {
     if (leftDropdownValue == rightDropdown.value) {
         leftDropdown.selectedIndex = rightDropdownValue;
         leftDropdownValue = leftDropdown.value;
-        var tempVal = rightInput.value;
+        let tempVal = rightInput.value;
         rightInput.value = leftInput.value;
         leftInput.value = tempVal;
 
@@ -119,8 +119,8 @@ function doneRightSelecting() {
 
 // Calculate the other side
 function calculateRight() {
-    var leftValue = parseFloat(leftInput.value);
-    var rightValue = parseFloat(rightInput.value);
+    let leftValue = parseFloat(leftInput.value);
+    let rightValue = parseFloat(rightInput.value);
 
     if      (leftDropdownValue == 0 && rightDropdownValue == 1) rightValue = (leftValue * (9/5))   + 32;
     else if (leftDropdownValue == 0 && rightDropdownValue == 2) rightValue = leftValue + 273.15;
@@ -134,8 +134,8 @@ function calculateRight() {
 }
 
 function calculateLeft() {
-    var leftValue = parseFloat(leftInput.value);
-    var rightValue = parseFloat(rightInput.value);
+    let leftValue = parseFloat(leftInput.value);
+    let rightValue = parseFloat(rightInput.value);
 
     if      (leftDropdownValue == 0 && rightDropdownValue == 1) leftValue = (rightValue - 32)      * (5/9);
     else if (leftDropdownValue == 0 && rightDropdownValue == 2) leftValue = rightValue - 273.15;
