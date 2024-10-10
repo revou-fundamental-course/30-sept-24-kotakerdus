@@ -40,13 +40,17 @@ rightInput.oninput = (e) => {
 
 function inputWarning(whichInput) {
     if (whichInput.value == "") {
-        // Make the input-box turns yellow if error occured (input.value turns blank if invalid)
-        leftInput.style.backgroundColor = 'yellow';
-        rightInput.style.backgroundColor = 'yellow';
+        // Make the border turns red if error occured (input.value turns blank if invalid)
+        leftInput.style.borderColor = 'red';
+        leftDrop.style.borderColor = 'red';
+        rightInput.style.borderColor = 'red';
+        rightDrop.style.borderColor = 'red';
     } else {
         // Return normal as soon as the value is valid
-        leftInput.style.backgroundColor = '';
-        rightInput.style.backgroundColor = '';
+        leftInput.style.borderColor = 'var(--border-color)';
+        leftDrop.style.borderColor = 'var(--border-color)';
+        rightInput.style.borderColor = 'var(--border-color)';
+        rightDrop.style.borderColor = 'var(--border-color)';
     }
 }
 
