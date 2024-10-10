@@ -3,14 +3,11 @@
   --inner-space: 20px;
 }
 
-* {
-  font-family: "Calibri";
-}
+/* Assign default font & remove default margin value */
+* { font-family: "Calibri"; }
+body, h1, h2, h3, h4, h5, h6 { margin: 0; }
 
-body {
-  margin: 0;
-}
-
+/* Center the window */
 .wrapper {
   height: 100vh;
   display: flex;
@@ -19,6 +16,7 @@ body {
   justify-content: center;
 }
 
+/* Add border & shadow to create a card-like window like in material design */
 .wrapper .card {
   background-color: white;
   padding: calc(var(--inner-space) * 2) var(--inner-space);
@@ -34,6 +32,7 @@ body {
   gap: var(--inner-space);
 }
 
+/* Resize & centering the icon  */
 header {
   font-size: 20pt;
   font-weight: bold;
@@ -42,6 +41,7 @@ header {
 
 header .temp {
   position: relative;
+  left: -5px;
   top: -70px;
   scale: 6.5;
   rotate: 20deg;
@@ -50,17 +50,34 @@ header .temp {
 header .snow {
   position: relative;
   top: -70px;
-  left: 43px;
-  scale: 2.5;
+  left: 45px;
+  scale: 3;
   rotate: 20deg;
 }
 
-.content {
-  display: flex;
-}
+/* Make the input & dropdown in-line */
+.content { display: flex; }
 
+/* Resize & flex-column the form content (input & select) */
 .content form {
   width: 110px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content  input {
+  font-size: 16pt;
+  font-weight: 1000;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  border-radius: 5px 5px 0 0;
+}
+
+.content select {
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 5px 5px;
+  margin-top: -1px;
+  background-color: #f6f2f9;
 }
 
 .content .equal-sign {
@@ -68,37 +85,8 @@ header .snow {
   padding: 7px var(--inner-space) 0;
 }
 
-.content .input-content {
-  display: flex;
-  flex-direction: column;
-
-}
-
-.content .input-content input {
-  font-size: 16pt;
-  font-weight: 1000;
-  text-align: center;
-}
-
-input {
-  border: 1px solid var(--border-color);
-  border-radius: 5px 5px 0 0;
-}
-
-select {
-  border: 1px solid var(--border-color);
-  border-radius: 0 0 5px 5px;
-  margin-top: -1px;
-  background-color: #f6f2f9;
-}
-
-.formula {
-  width: 100%;
-}
-
-.formula #formula-text {
-  display: block;
-}
+/* Move formula content to left side by modifying its width to fill both side due to flex */
+.formula { width: 100%; }
 
 .credit {
   font-size: 10pt;
